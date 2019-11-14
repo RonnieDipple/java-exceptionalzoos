@@ -1,0 +1,6 @@
+[2019-11-13 23:06:01.906] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing ProtocolHandler ["http-nio-2019"]
+[2019-11-13 23:06:01.908] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting service [Tomcat]
+[2019-11-13 23:06:01.908] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.27]
+[2019-11-13 23:06:02.014] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2019-11-13 23:06:04.798] [org.apache.juli.logging.DirectJDKLog] [restartedMain] [173] [INFO ] Starting ProtocolHandler ["http-nio-2019"]
+[2019-11-13 23:06:05.548] [org.apache.juli.logging.DirectJDKLog] [RMI TCP Connection(2)-192.168.1.105] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'

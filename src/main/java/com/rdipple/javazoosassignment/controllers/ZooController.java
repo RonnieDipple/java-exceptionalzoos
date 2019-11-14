@@ -12,11 +12,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/zoos")
 public class ZooController {
 
+   
     ZooService zooService;
 
     ///GET /zoos returns all zoos with their phone numbers and animals
