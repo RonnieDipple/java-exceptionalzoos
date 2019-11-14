@@ -4,6 +4,7 @@ import com.rdipple.javazoosassignment.exceptions.ResourceFoundException;
 import com.rdipple.javazoosassignment.exceptions.ResourceNotFoundException;
 import com.rdipple.javazoosassignment.exceptions.ValidationError;
 import com.rdipple.javazoosassignment.models.ErrorDetail;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.core.Ordered;
@@ -32,7 +33,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
 
 //@Loggable
 // bean shared across controller classes
@@ -40,15 +40,18 @@ import java.util.logging.Logger;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler
 {
-   // private static final Logger logger = LoggerFactory.getLogger(RestExceptionHandler.class);
+    private static final Logger logger = LoggerFactory.getLogger(ResponseEntityExceptionHandler.class);
+
     public RestExceptionHandler()
     {
         super();
+        logger.info("ResponseExceptionHandler accessed");
     }
     @ExceptionHandler({ResourceNotFoundException.class, EntityNotFoundException.class})
     public ResponseEntity<?> handleResourceNotFoundException(ResourceNotFoundException rnfe,
                                                              HttpServletRequest request)
     {
+        logger.info("ResponseEntityExceptionHandler method handleResourceNotFoundException accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.NOT_FOUND.value());
@@ -64,6 +67,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     public ResponseEntity<?> handleResourceFoundException(ResourceFoundException rfe,
                                                           HttpServletRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleResourceFoundException accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -81,6 +85,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                         HttpStatus status,
                                                         WebRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleTypeMismatch accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -97,6 +102,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                                    HttpStatus status,
                                                                    WebRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleNoHandlerFoundException accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.NOT_FOUND.value());
@@ -113,6 +119,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                                          HttpStatus status,
                                                                          WebRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleHttpRequestMethodNotSupported accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.NOT_FOUND.value());
@@ -129,6 +136,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                                   HttpStatus status,
                                                                   WebRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleMethodArgumentNotValid accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -164,6 +172,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                                   HttpStatus status,
                                                                   WebRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleHttpMessageNotReadable accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(status.value());
@@ -181,6 +190,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                                      HttpStatus status,
                                                                      WebRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleHttpMediaTypeNotSupported accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         StringBuilder builder = new StringBuilder();
         builder.append(ex.getContentType());
@@ -203,6 +213,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                                HttpStatus status,
                                                                WebRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleMissingPathVariable accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());
@@ -221,6 +232,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
                                                              HttpStatus status,
                                                              WebRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleExceptionInternal accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
@@ -236,6 +248,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
     protected ResponseEntity<?> handleAllOtherExceptions(Exception ex,
                                                          HttpServletRequest request)
     {
+        logger.info("ResponseExceptionHandler method handleAllOtherExceptions accessed");
         ErrorDetail errorDetail = new ErrorDetail();
         errorDetail.setTimestamp(new Date().getTime());
         errorDetail.setStatus(HttpStatus.BAD_REQUEST.value());

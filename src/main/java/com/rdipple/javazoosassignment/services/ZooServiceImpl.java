@@ -2,22 +2,27 @@ package com.rdipple.javazoosassignment.services;
 
 import com.rdipple.javazoosassignment.exceptions.ResourceFoundException;
 import com.rdipple.javazoosassignment.exceptions.ResourceNotFoundException;
+import com.rdipple.javazoosassignment.models.Animal;
 import com.rdipple.javazoosassignment.models.Telephone;
 import com.rdipple.javazoosassignment.models.Zoo;
 import com.rdipple.javazoosassignment.repositories.AnimalRepository;
 import com.rdipple.javazoosassignment.repositories.ZooRepository;
 import com.rdipple.javazoosassignment.views.ZooCountTelephones;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @Qualifier("zooService")
 public class ZooServiceImpl implements ZooService {
+
 
     private ZooRepository zooRepository;
     private AnimalRepository animalRepository;
@@ -70,7 +75,7 @@ public class ZooServiceImpl implements ZooService {
 
     @Transactional
     @Override
-    public Zoo update(Zoo zoo, long id) {
+    public Zoo update(Zoo zoo, long id){
         Zoo newZoo = findZooById(id);
         if (zoo.getZooname() != null) {
             newZoo.setZooname(zoo.getZooname());

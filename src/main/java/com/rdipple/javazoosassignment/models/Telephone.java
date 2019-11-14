@@ -1,12 +1,15 @@
 package com.rdipple.javazoosassignment.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "telephones")
 public class Telephone extends Auditable {
+    private static final Logger logger = LoggerFactory.getLogger(Telephone.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

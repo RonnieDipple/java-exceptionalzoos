@@ -1,7 +1,10 @@
 package com.rdipple.javazoosassignment.models;
 
 import com.rdipple.javazoosassignment.exceptions.ValidationError;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,12 +18,13 @@ public class ErrorDetail {
     private String timestamp;
     private String developerMessage;
     private Map<String, List<ValidationError>> errors = new HashMap<>();
+    private static final Logger logger = LoggerFactory.getLogger(ErrorDetail.class);
 
     public String getDetail() {
         return Detail;
     }
 
-    public void setDetail(String detail) {
+    public void setDetail(String detail){
         Detail = detail;
     }
 
@@ -32,7 +36,7 @@ public class ErrorDetail {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title){
         this.title = title;
     }
 
@@ -40,15 +44,14 @@ public class ErrorDetail {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setStatus(int status){
     }
 
     public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Long timestamp) {
+    public void setTimestamp(Long timestamp ) {
         this.timestamp = new SimpleDateFormat("dd MMM yyyy HH:mm:ss:SSS Z").format(new Date(timestamp));
     }
 
@@ -56,7 +59,7 @@ public class ErrorDetail {
         return developerMessage;
     }
 
-    public void setDeveloperMessage(String developerMessage) {
+    public void setDeveloperMessage(String developerMessage){
         this.developerMessage = developerMessage;
     }
 

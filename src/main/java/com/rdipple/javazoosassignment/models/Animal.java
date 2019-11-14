@@ -1,14 +1,20 @@
 package com.rdipple.javazoosassignment.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "animals")
 public class Animal extends Auditable{
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long animalid;
@@ -25,30 +31,39 @@ public class Animal extends Auditable{
     public Animal() {}
 
     public Animal(String animaltype) {
+
+
         this.animaltype = animaltype;
     }
 
     public long getAnimalid() {
+
+
         return animalid;
     }
 
     public void setAnimalid(long animalid) {
+
         this.animalid = animalid;
     }
 
     public String getAnimaltype() {
+
         return animaltype;
     }
 
     public void setAnimaltype(String animaltype) {
+
         this.animaltype = animaltype;
     }
 
     public List<ZooAnimals> getZooanimals() {
+
         return zooanimals;
     }
 
     public void setZooanimals(List<ZooAnimals> zooanimals) {
+
         this.zooanimals = zooanimals;
     }
 }
